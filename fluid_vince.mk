@@ -27,17 +27,25 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system_ext.mk)
 # Inherit from vince device
 $(call inherit-product, device/xiaomi/vince/device.mk)
 
-# Inherit some common PE stuff.
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+# Inherit some common Fluid stuff.
+$(call inherit-product, vendor/fluid/config/common_full_phone.mk)
+
 TARGET_BOOT_ANIMATION_RES := 1080
-TARGET_GAPPS_ARCH := arm64
-TARGET_DISABLE_POSTRENDER_CLEANUP := true
 TARGET_FACE_UNLOCK_SUPPORTED := true
-TARGET_INCLUDE_LIVE_WALLPAPERS := false
+
+IS_PHONE := true
+TARGET_INCLUDE_GAPPS := true
+TARGET_GAPPS_ARCH := arm64
+TARGET_INCLUDE_STOCK_ARCORE := true
+TARGET_INCLUDE_GOOGLE_RECORDER := true
+PRODUCT_PRODUCT_PROPERTIES += \
+  ro.fluid.maintainer=Jack1Player \
+  ro.fluid.cpu=msm8996
+
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := vince
-PRODUCT_NAME := aosp_vince
+PRODUCT_NAME := fluid_vince
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi 5 Plus
 PRODUCT_MANUFACTURER := Xiaomi
